@@ -23,4 +23,7 @@ public class Voo
     // Propriedades de navegação - Sem precisar fazer o inner join com as chaves estrangeiras
     public Aeronave Aeronave { get; set; } = null!;
     public Piloto Piloto { get; set; } = null!;
+
+    // O cancelamento será null ao começo
+    public Cancelamento Cancelamento { get; set; }
 }
