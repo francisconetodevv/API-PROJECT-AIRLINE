@@ -1,4 +1,5 @@
 using CIAArea.Entities;
+using CIAArea.EntitiesConfigurations;
 using Microsoft.EntityFrameworkCore;
 
 namespace CIAArea.Contexts;
@@ -26,5 +27,14 @@ public class CiaAereaContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         optionsBuilder.UseSqlServer(_configuration.GetConnectionString("CiaAerea"));
+    }
+
+    // Tudo que precisamos fazer, para que o nosso db context leve em consideração as modificações realizadas.
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder.ApplyConfiguration(new AeronaveConfiguration());
+        modelBuilder.ApplyConfiguration(new VooConfiguration());
+        modelBuilder.ApplyConfiguration(new CancelamentoConfiguration());
+        modelBuilder.ApplyConfiguration(new ManutencaoConfiguration());
     }
 }
