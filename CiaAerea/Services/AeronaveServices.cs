@@ -15,7 +15,7 @@ public class AeronaveServices
         _context = context;
     }
 
-    // Primeira ação do CRUD - Create - Método
+    // Primeira ação do CRUD - Create - Método POST
     public DetalhesAeronaveViewModel AdicionarAeronave(AdicionarAeronaveViewModel dados)
     {
         var aeronave = new Aeronave(dados.Fabricante, dados.Modelo, dados.Codigo);
@@ -29,5 +29,11 @@ public class AeronaveServices
             aeronave.Modelo,
             aeronave.Codigo
         );
+    }
+
+    // Método de Get - Read
+    public IEnumerable<ListarAeronaveViewModel> ListarAeronaves()
+    {
+        return _context.Aeronaves.Select(a => new ListarAeronaveViewModel(a.Id, a.Modelo, a.Codigo));
     }
 }

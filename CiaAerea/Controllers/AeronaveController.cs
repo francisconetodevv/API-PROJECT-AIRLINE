@@ -23,4 +23,10 @@ public class AeronaveControllers : ControllerBase
         return Ok(aeronave);
     }
 
+    [HttpGet]
+    public IActionResult ListarAeronaves()
+    {
+        return Ok(_aeronaveService.ListarAeronaves());
+    }
+
 }
