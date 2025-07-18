@@ -1,4 +1,6 @@
 using CIAArea.Contexts;
+using CIAArea.Entities;
+using CIAArea.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,6 +11,7 @@ builder.Services.AddSwaggerGen();
 
 // Injeção de dependência pelo aspnet
 builder.Services.AddDbContext<CiaAereaContext>();
+builder.Services.AddTransient<AeronaveServices>();
 
 
 var app = builder.Build();
