@@ -11,6 +11,7 @@ public class CiaAereaContext : DbContext
     // Classe de aspnet que carrega a string de conexão do arquivo json appsettings.json
     private readonly IConfiguration _configuration;
 
+    // Construtor da propriedade acima
     public CiaAereaContext(IConfiguration configuration)
     {
         _configuration = configuration;

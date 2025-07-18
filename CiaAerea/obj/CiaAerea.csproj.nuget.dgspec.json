@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/francisco-neto/Francisco/Dev/Development/C#/CIAAerea/CiaAerea/CiaAerea.csproj": {}
+    "C:\\Users\\PC\\Documents\\Francisco\\Dev\\C#\\1. CIAAerea\\API-PROJECT-AIRLINE\\CiaAerea\\CiaAerea.csproj": {}
   },
   "projects": {
-    "/home/francisco-neto/Francisco/Dev/Development/C#/CIAAerea/CiaAerea/CiaAerea.csproj": {
+    "C:\\Users\\PC\\Documents\\Francisco\\Dev\\C#\\1. CIAAerea\\API-PROJECT-AIRLINE\\CiaAerea\\CiaAerea.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/francisco-neto/Francisco/Dev/Development/C#/CIAAerea/CiaAerea/CiaAerea.csproj",
+        "projectUniqueName": "C:\\Users\\PC\\Documents\\Francisco\\Dev\\C#\\1. CIAAerea\\API-PROJECT-AIRLINE\\CiaAerea\\CiaAerea.csproj",
         "projectName": "CiaAerea",
-        "projectPath": "/home/francisco-neto/Francisco/Dev/Development/C#/CIAAerea/CiaAerea/CiaAerea.csproj",
-        "packagesPath": "/home/francisco-neto/.nuget/packages/",
-        "outputPath": "/home/francisco-neto/Francisco/Dev/Development/C#/CIAAerea/CiaAerea/obj/",
+        "projectPath": "C:\\Users\\PC\\Documents\\Francisco\\Dev\\C#\\1. CIAAerea\\API-PROJECT-AIRLINE\\CiaAerea\\CiaAerea.csproj",
+        "packagesPath": "C:\\Users\\PC\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\PC\\Documents\\Francisco\\Dev\\C#\\1. CIAAerea\\API-PROJECT-AIRLINE\\CiaAerea\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/francisco-neto/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\PC\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,7 +32,13 @@
           "warnAsError": [
             "NU1605"
           ]
-        }
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -76,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.117/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.303/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

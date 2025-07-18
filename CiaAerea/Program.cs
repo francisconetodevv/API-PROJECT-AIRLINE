@@ -1,9 +1,15 @@
+using CIAArea.Contexts;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Injeção de dependência pelo aspnet
+builder.Services.AddDbContext<CiaAereaContext>();
+
 
 var app = builder.Build();
 
