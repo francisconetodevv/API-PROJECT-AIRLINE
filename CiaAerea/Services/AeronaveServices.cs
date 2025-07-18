@@ -31,9 +31,29 @@ public class AeronaveServices
         );
     }
 
-    // Método de Get - Read
+    // Método de Get - Aeronaves
     public IEnumerable<ListarAeronaveViewModel> ListarAeronaves()
     {
         return _context.Aeronaves.Select(a => new ListarAeronaveViewModel(a.Id, a.Modelo, a.Codigo));
     }
+
+    // Método de Get - Aeronave
+    public DetalhesAeronaveViewModel? ListarAeronavePeloId(int id)
+    {
+        var aeronave = _context.Aeronaves.Find(id);
+
+        if (aeronave != null)
+        {
+            return new DetalhesAeronaveViewModel
+           (
+               aeronave.Id,
+               aeronave.Fabricante,
+               aeronave.Modelo,
+               aeronave.Codigo
+           );
+        }
+
+        return null;
+    }
+
 }

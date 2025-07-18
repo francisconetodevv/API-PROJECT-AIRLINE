@@ -29,4 +29,17 @@ public class AeronaveControllers : ControllerBase
         return Ok(_aeronaveService.ListarAeronaves());
     }
 
+    [HttpGet("{id}")]
+    public IActionResult ListarAeronavePeloId(int id)
+    {
+        var aeronave = _aeronaveService.ListarAeronavePeloId(id);
+
+        if (aeronave != null)
+        {
+            return Ok(aeronave);
+        }
+
+        return NotFound();
+    }
+
 }
