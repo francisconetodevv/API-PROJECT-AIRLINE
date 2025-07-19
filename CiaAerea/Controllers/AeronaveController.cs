@@ -55,4 +55,11 @@ public class AeronaveControllers : ControllerBase
         return Ok(aeronave);
     }
 
+    [HttpDelete("{id}")]
+    public IActionResult ExcluirAeronave(int id)
+    {
+        _aeronaveService.ExcluirAeronave(id);
+
+        return NoContent();
+    }
 }
