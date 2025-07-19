@@ -12,13 +12,15 @@ public class AeronaveServices
     private readonly CiaAereaContext _context;
     private readonly AdicionarAeronaveValidator _adicionarAeronaveValidator;
     private readonly AtualizarAeronaveValidator _atualizarAeronaveValidator;
+    private readonly ExcluirAeronaveValidator _excluirAeronaveValidator;
 
     // Construtor
-    public AeronaveServices(CiaAereaContext context, AdicionarAeronaveValidator adicionarAeronaveValidator, AtualizarAeronaveValidator atualizarAeronaveValidator)
+    public AeronaveServices(CiaAereaContext context, AdicionarAeronaveValidator adicionarAeronaveValidator, AtualizarAeronaveValidator atualizarAeronaveValidator, ExcluirAeronaveValidator excluirAeronaveValidator)
     {
         _context = context;
         _adicionarAeronaveValidator = adicionarAeronaveValidator;
         _atualizarAeronaveValidator = atualizarAeronaveValidator;
+        _excluirAeronaveValidator = excluirAeronaveValidator;
     }
 
     // Primeira ação do CRUD - Create - Método POST
@@ -68,7 +70,7 @@ public class AeronaveServices
     public DetalhesAeronaveViewModel? AtualizarAeronave(AtualizarAeronaveViewModel dados)
     {
         _atualizarAeronaveValidator.ValidateAndThrow(dados);
-        
+
         var aeronave = _context.Aeronaves.Find(dados.Id);
 
         if (aeronave != null)
@@ -88,6 +90,7 @@ public class AeronaveServices
 
     public void ExcluirAeronave(int id)
     {
+        _excluirAeronaveValidator.ValidateAndThrow(id);
         var aeronave = _context.Aeronaves.Find(id);
 
         if (aeronave != null)

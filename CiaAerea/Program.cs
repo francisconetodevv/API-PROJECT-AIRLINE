@@ -16,6 +16,7 @@ builder.Services.AddDbContext<CiaAereaContext>();
 builder.Services.AddTransient<AeronaveServices>();
 builder.Services.AddTransient<AdicionarAeronaveValidator>();
 builder.Services.AddTransient<AtualizarAeronaveValidator>();
+builder.Services.AddTransient<ExcluirAeronaveValidator>();
 
 
 var app = builder.Build();
