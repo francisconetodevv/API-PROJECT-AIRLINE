@@ -56,4 +56,24 @@ public class AeronaveServices
         return null;
     }
 
+    // Método de PUT - Aeronave
+    public DetalhesAeronaveViewModel? AtualizarAeronave(AtualizarAeronaveViewModel dados)
+    {
+        var aeronave = _context.Aeronaves.Find(dados.Id);
+
+        if (aeronave != null)
+        {
+            aeronave.Fabricante = dados.Fabricante;
+            aeronave.Modelo = dados.Modelo;
+            aeronave.Codigo = dados.Codigo;
+
+            _context.Update(aeronave);
+            _context.SaveChanges();
+
+            return new DetalhesAeronaveViewModel(aeronave.Id, aeronave.Fabricante, aeronave.Modelo, aeronave.Codigo);
+        }
+
+        return null;
+    }
+
 }
