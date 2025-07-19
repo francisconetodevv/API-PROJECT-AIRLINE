@@ -1,3 +1,4 @@
+using CIAAerea.Validators;
 using CIAArea.Contexts;
 using CIAArea.Entities;
 using CIAArea.Services;
@@ -13,6 +14,8 @@ builder.Services.AddSwaggerGen();
 // Injeção de dependência pelo aspnet
 builder.Services.AddDbContext<CiaAereaContext>();
 builder.Services.AddTransient<AeronaveServices>();
+builder.Services.AddTransient<AdicionarAeronaveValidator>();
+builder.Services.AddTransient<AtualizarAeronaveValidator>();
 
 
 var app = builder.Build();

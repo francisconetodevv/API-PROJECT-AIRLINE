@@ -340,3 +340,4 @@ C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\obj\Debug\net8.0\CiaAerea.pdb
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\obj\Debug\net8.0\CiaAerea.genruntimeconfig.cache
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\obj\Debug\net8.0\ref\CiaAerea.dll
+C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\FluentValidation.dll

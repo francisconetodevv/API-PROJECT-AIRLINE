@@ -1,6 +1,8 @@
 using CIAArea.Contexts;
 using CIAArea.Entities;
 using CIAArea.ViewModels;
+using CIAAerea.Validators;
+using FluentValidation;
 
 namespace CIAArea.Services;
 
@@ -8,16 +10,22 @@ public class AeronaveServices
 {
     // Instância do db Context para ter acesso ao banco de dados
     private readonly CiaAereaContext _context;
+    private readonly AdicionarAeronaveValidator _adicionarAeronaveValidator;
+    private readonly AtualizarAeronaveValidator _atualizarAeronaveValidator;
 
     // Construtor
-    public AeronaveServices(CiaAereaContext context)
+    public AeronaveServices(CiaAereaContext context, AdicionarAeronaveValidator adicionarAeronaveValidator, AtualizarAeronaveValidator atualizarAeronaveValidator)
     {
         _context = context;
+        _adicionarAeronaveValidator = adicionarAeronaveValidator;
+        _atualizarAeronaveValidator = atualizarAeronaveValidator;
     }
 
     // Primeira ação do CRUD - Create - Método POST
     public DetalhesAeronaveViewModel AdicionarAeronave(AdicionarAeronaveViewModel dados)
     {
+        _adicionarAeronaveValidator.ValidateAndThrow(dados);
+
         var aeronave = new Aeronave(dados.Fabricante, dados.Modelo, dados.Codigo);
 
         _context.Add(aeronave);
@@ -59,6 +67,8 @@ public class AeronaveServices
     // Método de PUT - Aeronave
     public DetalhesAeronaveViewModel? AtualizarAeronave(AtualizarAeronaveViewModel dados)
     {
+        _atualizarAeronaveValidator.ValidateAndThrow(dados);
+        
         var aeronave = _context.Aeronaves.Find(dados.Id);
 
         if (aeronave != null)
