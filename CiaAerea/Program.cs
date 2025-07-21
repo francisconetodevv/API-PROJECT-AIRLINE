@@ -1,4 +1,5 @@
 using CIAAerea.Middlewares;
+using CIAAerea.Services;
 using CIAAerea.Validators;
 using CIAAerea.Validators.Piloto;
 using CIAArea.Contexts;
@@ -14,13 +15,24 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Injeção de dependência pelo aspnet
+
+// Context
 builder.Services.AddDbContext<CiaAereaContext>();
+
+// Services
 builder.Services.AddTransient<AeronaveServices>();
+builder.Services.AddTransient<PilotoService>();
+
+// Validators
+
+/// Aeronave - Validators
 builder.Services.AddTransient<AdicionarAeronaveValidator>();
 builder.Services.AddTransient<AtualizarAeronaveValidator>();
+
+/// Piloto - Validators
 builder.Services.AddTransient<ExcluirAeronaveValidator>();
 builder.Services.AddTransient<AdicionarPilotoValidator>();
-
+ 
 
 var app = builder.Build();
 
