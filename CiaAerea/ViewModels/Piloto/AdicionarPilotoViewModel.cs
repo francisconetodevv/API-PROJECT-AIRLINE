@@ -1,8 +1,8 @@
 namespace CIAAerea.ViewModels.Piloto;
 
-public class AdicionarPiloViewModel
+public class AdicionarPilotoViewModel
 {
-    public AdicionarPiloViewModel(string nome, string matricula)
+    public AdicionarPilotoViewModel(string nome, string matricula)
     {
         Nome = nome;
         Matricula = matricula;

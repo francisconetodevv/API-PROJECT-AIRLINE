@@ -1,5 +1,6 @@
 using CIAAerea.Middlewares;
 using CIAAerea.Validators;
+using CIAAerea.Validators.Piloto;
 using CIAArea.Contexts;
 using CIAArea.Entities;
 using CIAArea.Services;
@@ -18,6 +19,7 @@ builder.Services.AddTransient<AeronaveServices>();
 builder.Services.AddTransient<AdicionarAeronaveValidator>();
 builder.Services.AddTransient<AtualizarAeronaveValidator>();
 builder.Services.AddTransient<ExcluirAeronaveValidator>();
+builder.Services.AddTransient<AdicionarPilotoValidator>();
 
 
 var app = builder.Build();
