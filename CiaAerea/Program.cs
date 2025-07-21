@@ -1,3 +1,4 @@
+using CIAAerea.Middlewares;
 using CIAAerea.Validators;
 using CIAArea.Contexts;
 using CIAArea.Entities;
@@ -30,6 +31,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.MapControllers(); // Adicione esta linha AQUI!
+app.UseMiddleware<ValidationExceptionHandlerMiddleware>();
 
 app.Run();
 
