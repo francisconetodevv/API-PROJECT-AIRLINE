@@ -12,12 +12,14 @@ public class PilotoService
     private readonly CiaAereaContext _context;
     private readonly AdicionarPilotoValidator _adicionarPilotoValidator;
     private readonly AtualizarPilotoValidator _atualizarPilotoValidator;
+    private readonly ExcluirPilotoValidator _excluirPilotoValidator;
 
-    public PilotoService(CiaAereaContext context, AdicionarPilotoValidator adicionarPilotoValidator, AtualizarPilotoValidator atualizarPilotoValidator)
+    public PilotoService(CiaAereaContext context, AdicionarPilotoValidator adicionarPilotoValidator, AtualizarPilotoValidator atualizarPilotoValidator, ExcluirPilotoValidator excluirPilotoValidator)
     {
         _context = context;
         _adicionarPilotoValidator = adicionarPilotoValidator;
         _atualizarPilotoValidator = atualizarPilotoValidator;
+        _excluirPilotoValidator = excluirPilotoValidator;
     }
 
     public DetalhesPilotoViewModel AdicionarPiloto(AdicionarPilotoViewModel dados)
@@ -68,4 +70,18 @@ public class PilotoService
 
         return null;
     }
+
+    public void ExcluirPiloto(int id)
+    {
+        _excluirPilotoValidator.ValidateAndThrow(id);
+
+        var piloto = _context.Pilotos.Find(id);
+
+        if (piloto != null)
+        {
+            _context.Remove(piloto);
+            _context.SaveChanges();
+        }
+    }
+
 }

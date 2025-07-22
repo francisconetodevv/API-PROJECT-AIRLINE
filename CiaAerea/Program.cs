@@ -23,6 +23,7 @@ builder.Services.AddDbContext<CiaAereaContext>();
 builder.Services.AddTransient<AeronaveServices>();
 builder.Services.AddTransient<PilotoService>();
 builder.Services.AddTransient<AtualizarPilotoValidator>();
+builder.Services.AddTransient<ExcluirPilotoValidator>();
 
 // Validators
 

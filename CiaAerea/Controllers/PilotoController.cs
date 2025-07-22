@@ -57,4 +57,12 @@ public class PilotoController : ControllerBase
         var piloto = _pilotoService.AtualizarPiloto(dados);
         return Ok(piloto);
     }
+
+    // DELETE
+    [HttpDelete("{id}")]
+    public IActionResult ExcluirPiloto(int id)
+    {
+        _pilotoService.ExcluirPiloto(id);
+        return NoContent();
+    }
 }
