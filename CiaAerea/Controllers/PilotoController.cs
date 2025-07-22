@@ -44,4 +44,17 @@ public class PilotoController : ControllerBase
 
         return NotFound();
     }
+
+    // PUT
+    [HttpPut]
+    public IActionResult AtualizarPiloto(int id, AtualizarPilotoViewModel dados)
+    {
+        if (id != dados.Id)
+        {
+            return BadRequest("Id do piloto não confere com o Id dos dados enviados.");
+        }
+
+        var piloto = _pilotoService.AtualizarPiloto(dados);
+        return Ok(piloto);
+    }
 }
