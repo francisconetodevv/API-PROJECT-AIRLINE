@@ -24,6 +24,7 @@ builder.Services.AddTransient<AeronaveServices>();
 builder.Services.AddTransient<PilotoService>();
 builder.Services.AddTransient<AtualizarPilotoValidator>();
 builder.Services.AddTransient<ExcluirPilotoValidator>();
+builder.Services.AddTransient<AdicionarPilotoValidator>();
 
 // Validators
 
