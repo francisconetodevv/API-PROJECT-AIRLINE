@@ -2,6 +2,7 @@ using CIAAerea.Middlewares;
 using CIAAerea.Services;
 using CIAAerea.Validators;
 using CIAAerea.Validators.Piloto;
+using CIAAerea.Validators.Voo;
 using CIAArea.Contexts;
 using CIAArea.Entities;
 using CIAArea.Services;
@@ -22,11 +23,13 @@ builder.Services.AddDbContext<CiaAereaContext>();
 // Services
 builder.Services.AddTransient<AeronaveServices>();
 builder.Services.AddTransient<PilotoService>();
+builder.Services.AddTransient<VooService>();
+
+
+// Validators
 builder.Services.AddTransient<AtualizarPilotoValidator>();
 builder.Services.AddTransient<ExcluirPilotoValidator>();
 builder.Services.AddTransient<AdicionarPilotoValidator>();
-
-// Validators
 
 /// Aeronave - Validators
 builder.Services.AddTransient<AdicionarAeronaveValidator>();
@@ -35,7 +38,9 @@ builder.Services.AddTransient<AtualizarAeronaveValidator>();
 /// Piloto - Validators
 builder.Services.AddTransient<ExcluirAeronaveValidator>();
 builder.Services.AddTransient<AdicionarPilotoValidator>();
- 
+
+// Voo - Validators
+builder.Services.AddTransient<AdicionarVooValidator>();
 
 var app = builder.Build();
 
