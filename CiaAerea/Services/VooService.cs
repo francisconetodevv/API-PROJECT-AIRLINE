@@ -42,6 +42,20 @@ public class VooService
             voo.DataHoraPartida,
             voo.AeronaveId,
             voo.PilotoId
-        );      
+        );
+    }
+
+    public IEnumerable<ListarVooViewModel> ListarVoo()
+    {
+        return _context.Voos.Select(
+            v => new ListarVooViewModel
+            (
+                v.Id,
+                v.Origem,
+                v.Destino,
+                v.DataHoraPartida,
+                v.DataHoraChegada
+            )
+        );
     }
 }
