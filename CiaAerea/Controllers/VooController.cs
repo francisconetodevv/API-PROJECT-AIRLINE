@@ -41,4 +41,29 @@ public class VooController : ControllerBase
 
         return NotFound();
     }
+
+    [HttpPut("{id}")]
+    public IActionResult AtualizarVoo(int id, AtualizarVooViewModel dados)
+    {
+        if (id != dados.Id)
+        {
+            return BadRequest("O ID informado na URL é diferente do ID no corpo da requisição.");
+        }
+        var voo = _vooService.AtualizarVoo(dados);
+
+        if (voo != null)
+        {
+            return Ok(voo);
+        }
+
+        return NotFound();
+    }
+
+    [HttpDelete("{id}")]
+    public IActionResult ExcluirVoo(int id)
+    {
+        _vooService.ExcluirVoo(id);
+
+        return NoContent();
+    }
 }
