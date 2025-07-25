@@ -2,6 +2,7 @@ using CIAAerea.Middlewares;
 using CIAAerea.Services;
 using CIAAerea.Validators;
 using CIAAerea.Validators.Cancelamento;
+using CIAAerea.Validators.Manutencao;
 using CIAAerea.Validators.Piloto;
 using CIAAerea.Validators.Voo;
 using CIAArea.Contexts;
@@ -27,6 +28,7 @@ builder.Services.AddDbContext<CiaAereaContext>();
 builder.Services.AddTransient<AeronaveServices>();
 builder.Services.AddTransient<PilotoService>();
 builder.Services.AddTransient<VooService>();
+builder.Services.AddTransient<ManutencaoService>();
 
 
 // Validators
@@ -48,6 +50,8 @@ builder.Services.AddTransient<AtualizarVooValidator>();
 builder.Services.AddTransient<ExcluirVooValidator>();
 builder.Services.AddTransient<CancelarVooValidator>();
 
+// Manutencao - Validators
+builder.Services.AddTransient<AdicionarManutencaoValidator>();
 
 builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
