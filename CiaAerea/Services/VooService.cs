@@ -68,7 +68,7 @@ public class VooService
         var voo = _context.Voos.Include(v => v.Aeronave)
                                .Include(v => v.Piloto)
                                .FirstOrDefault(v => v.Id == id);
-        if (voo == null)
+        if (voo != null)
         {
             var resultado = new DetalhesVooViewModel(
                 voo.Id,
