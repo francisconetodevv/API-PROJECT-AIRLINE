@@ -20,7 +20,7 @@ public class VooController : ControllerBase
     {
         var voo = _vooService.AdicionarVoo(dados);
 
-        return Ok(voo);
+        return CreatedAtAction(nameof(ListarVooPeloId), new { voo.Id }, voo);
     }
 
     [HttpGet]
