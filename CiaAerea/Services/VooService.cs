@@ -6,6 +6,8 @@ using CIAArea.Entities;
 using Microsoft.EntityFrameworkCore;
 using CIAArea.ViewModels;
 using CIAAerea.ViewModels.Piloto;
+using CIAAerea.ViewModels.Cancelamento;
+using CIAAerea.Validators.Cancelamento;
 
 namespace CIAAerea.Services;
 
@@ -15,13 +17,15 @@ public class VooService
     private readonly AdicionarVooValidator _adicionarVooValidator;
     private readonly AtualizarVooValidator _atualizarVooValidator;
     private readonly ExcluirVooValidator _excluirVooValidator;
+    private readonly CancelarVooValidator _cancelarVooValidator;
 
-    public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator, ExcluirVooValidator excluirVooValidator)
+    public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator, ExcluirVooValidator excluirVooValidator, CancelarVooValidator cancelarVooValidator)
     {
         _context = context;
         _adicionarVooValidator = adicionarVooValidator;
         _atualizarVooValidator = atualizarVooValidator;
         _excluirVooValidator = excluirVooValidator;
+        _cancelarVooValidator = cancelarVooValidator;
     }
 
     public DetalhesVooViewModel AdicionarVoo(AdicionarVooViewModel dados)
@@ -71,6 +75,7 @@ public class VooService
     {
         var voo = _context.Voos.Include(v => v.Aeronave)
                                .Include(v => v.Piloto)
+                               .Include(v => v.Cancelamento)
                                .FirstOrDefault(v => v.Id == id);
         if (voo != null)
         {
@@ -96,6 +101,16 @@ public class VooService
                 voo.Piloto.Nome,
                 voo.Piloto.Matricula
             );
+
+            if (voo.Cancelamento != null)
+            {
+                resultado.Cancelamento = new DetalhesCancelamentoVooViewModel(
+                    voo.Cancelamento.Id,
+                    voo.Cancelamento.MotivoCancelamento,
+                    voo.Cancelamento.DataHoraNotificacao,
+                    voo.Cancelamento.VooId
+                );
+            }
 
             return resultado;
         }
@@ -138,5 +153,17 @@ public class VooService
             _context.Remove(voo);
             _context.SaveChanges();
         }
+    }
+
+    public DetalhesVooViewModel? CancelarVoo(CancelarVooViewModel dados)
+    {
+        _cancelarVooValidator.ValidateAndThrow(dados);
+
+        var cancelamento = new Cancelamento(dados.MotivoCancelamento, dados.DataHoraNotificacao, dados.VooId);
+
+        _context.Add(cancelamento);
+        _context.SaveChanges();
+
+        return ListarVooPeloId(dados.VooId);
     }
 }
