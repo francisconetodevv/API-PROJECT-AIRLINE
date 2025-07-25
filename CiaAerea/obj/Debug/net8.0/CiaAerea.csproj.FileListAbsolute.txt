@@ -171,6 +171,7 @@
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\appsettings.json
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\CiaAerea.staticwebassets.endpoints.json
+C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\libwkhtmltox.dll
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\CiaAerea.exe
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\CiaAerea.deps.json
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\CiaAerea.runtimeconfig.json
@@ -178,6 +179,8 @@ C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\CiaAerea.pdb
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\Azure.Core.dll
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\Azure.Identity.dll
+C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\DinkToPdf.dll
+C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\FluentValidation.dll
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\Humanizer.dll
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\Microsoft.AspNetCore.OpenApi.dll
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
@@ -340,5 +343,3 @@ C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\obj\Debug\net8.0\CiaAerea.pdb
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\obj\Debug\net8.0\CiaAerea.genruntimeconfig.cache
 C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\obj\Debug\net8.0\ref\CiaAerea.dll
-C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\FluentValidation.dll
-C:\Users\PC\Documents\Francisco\Dev\C#\1. CIAAerea\API-PROJECT-AIRLINE\CiaAerea\bin\Debug\net8.0\DinkToPdf.dll

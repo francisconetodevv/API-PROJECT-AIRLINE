@@ -8,6 +8,9 @@ using CIAArea.ViewModels;
 using CIAAerea.ViewModels.Piloto;
 using CIAAerea.ViewModels.Cancelamento;
 using CIAAerea.Validators.Cancelamento;
+using System.Text;
+using DinkToPdf;
+using DinkToPdf.Contracts;
 
 namespace CIAAerea.Services;
 
@@ -18,14 +21,16 @@ public class VooService
     private readonly AtualizarVooValidator _atualizarVooValidator;
     private readonly ExcluirVooValidator _excluirVooValidator;
     private readonly CancelarVooValidator _cancelarVooValidator;
+    private readonly IConverter _converter;
 
-    public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator, ExcluirVooValidator excluirVooValidator, CancelarVooValidator cancelarVooValidator)
+    public VooService(CiaAereaContext context, AdicionarVooValidator adicionarVooValidator, AtualizarVooValidator atualizarVooValidator, ExcluirVooValidator excluirVooValidator, CancelarVooValidator cancelarVooValidator, IConverter converter)
     {
         _context = context;
         _adicionarVooValidator = adicionarVooValidator;
         _atualizarVooValidator = atualizarVooValidator;
         _excluirVooValidator = excluirVooValidator;
         _cancelarVooValidator = cancelarVooValidator;
+        _converter = converter;
     }
 
     public DetalhesVooViewModel AdicionarVoo(AdicionarVooViewModel dados)
@@ -165,5 +170,58 @@ public class VooService
         _context.SaveChanges();
 
         return ListarVooPeloId(dados.VooId);
+    }
+
+    // Método para retornar o PDF
+    public byte[]? GerarFichaDoVoo(int id)
+    {
+        var voo = _context.Voos.Include(v => v.Aeronave)
+                               .Include(v => v.Piloto)
+                               .Include(v => v.Cancelamento)
+                               .FirstOrDefault(v => v.Id == id);
+
+        if (voo != null)
+        {
+            var builder = new StringBuilder();
+
+            // Código HTML
+            builder.Append($"<h1 style='text-align: center'>Ficha do Voo {voo.Id.ToString().PadLeft(10, '0')}</h1>")
+                   .Append($"<hr>")
+                   .Append($"<p><b>ORIGEM:</b> {voo.Origem} (saída em {voo.DataHoraPartida:dd/MM/yyyy} às {voo.DataHoraPartida:hh:mm})</p>")
+                   .Append($"<p><b>DESTINO:</b> {voo.Destino} (chegada em {voo.DataHoraChegada:dd/MM/yyyy} às {voo.DataHoraChegada:hh:mm})</p>")
+                   .Append($"<hr>")
+                   .Append($"<p><b>AERONAVE:</b> {voo.Aeronave!.Codigo} ({voo.Aeronave.Fabricante} {voo.Aeronave.Modelo})</p>")
+                   .Append($"<hr>")
+                   .Append($"<p><b>PILOTO:</b> {voo.Piloto!.Nome} ({voo.Piloto.Matricula})</p>")
+                   .Append($"<hr>");
+
+            if (voo.Cancelamento != null)
+            {
+                builder.Append($"<p style='color: red'><b>VOO CANCELADO:</b> {voo.Cancelamento.MotivoCancelamento}</p>");
+            }
+
+            // Configuração do PDF
+            var doc = new HtmlToPdfDocument()
+            {
+                GlobalSettings = {
+                    ColorMode = ColorMode.Color,
+                    Orientation = Orientation.Portrait,
+                    PaperSize = PaperKind.A4
+                },
+                Objects = {
+                    new ObjectSettings() {
+                        PagesCount = true,
+                        HtmlContent = builder.ToString(),
+                        WebSettings = { DefaultEncoding = "utf-8" }
+                    }
+                }
+            };
+
+            // Convertendo para o PDF
+            return _converter.Convert(doc);
+
+        }
+
+        return null;
     }
 }
