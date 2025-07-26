@@ -52,6 +52,8 @@ builder.Services.AddTransient<CancelarVooValidator>();
 
 // Manutencao - Validators
 builder.Services.AddTransient<AdicionarManutencaoValidator>();
+builder.Services.AddTransient<AtualizarManutencaoValidator>();
+builder.Services.AddTransient<ExcluirManutencaoValidator>();
 
 builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
 
